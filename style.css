@@ -21,7 +21,7 @@ h1 {
     height: 80px;
     width: inherit;
     background-color: rgb(255, 253, 222);
-    border-bottom: 2px solid;
+    border-bottom: 5px ridge gray;
 }
 
 .input-container {
