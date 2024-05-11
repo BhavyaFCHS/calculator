@@ -116,3 +116,7 @@ h1 {
     background-color: rgb(9, 35, 82);
     color: bisque;
 }
+
+.operation {
+    background-color: rgb(100, 252, 199);
+}
