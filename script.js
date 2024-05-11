@@ -3,6 +3,7 @@ const numpad = document.querySelector(".number-container");
 const operationsPad = document.querySelector(".operations-container");
 const output = document.querySelector(".display");
 const options = document.querySelector(".options");
+const page = document.querySelector("body");
 
 // Calculator objects
 const numbers = {
@@ -57,6 +58,26 @@ options.addEventListener("click", e => {
             break;
     }
 });
+
+page.addEventListener("keydown", e => {
+    let keys = ["+", "-", "*", "/"];
+    let nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+    if(keys.includes(e.key) || nums.includes(e.key)) {
+        calculation += e.key;
+        output.textContent = calculation;
+    }
+    if(e.key === "=" || e.code === "Enter") {
+        output.textContent = evaluateCalculation();
+        console.log(evaluateCalculation());
+        calculation = "";
+    }
+    if(e.code === "Backspace") {
+        calculation = calculation.slice(0, -1);
+        output.textContent = calculation;
+    }
+    console.log(calculation);
+});
+
 
 function evaluateCalculation() {
     if(calculation.includes("+")) {
