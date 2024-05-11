@@ -2,6 +2,7 @@
 const numpad = document.querySelector(".number-container");
 const operationsPad = document.querySelector(".operations-container");
 const output = document.querySelector(".display");
+const options = document.querySelector(".options");
 
 // Calculator objects
 const numbers = {
@@ -43,3 +44,46 @@ operationsPad.addEventListener("click", e => {
     }
     output.textContent = calculation;
 });
+
+options.addEventListener("click", e => {
+    switch(e.target.id) {
+        case "clear":
+            calculation = "";
+            output.textContent = calculation;
+            break;
+        case "evaluate":
+            output.textContent = evaluateCalculation();
+            calculation = "";
+            break;
+    }
+});
+
+function evaluateCalculation() {
+    if(calculation.includes("+")) {
+
+        let array = calculation.split("+");
+        return array.map(str => +str)
+                    .reduce((sum, i) => sum + i);
+
+    } else if(calculation.includes("-")) {
+
+        let array = calculation.split("-");
+        return array.map(str => +str)
+                    .reduce((sum, i) => sum - i);
+
+    } else if(calculation.includes("*")) {
+
+        let array = calculation.split("*");
+        return array.map(str => +str)
+                    .reduce((sum, i) => sum * i);
+
+    } else if(calculation.includes("/")) {
+
+        let array = calculation.split("/");
+        return array.map(str => +str)
+                    .reduce((sum, i) => sum / i);
+
+    } else {
+        return calculation;
+    }
+}
